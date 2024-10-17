@@ -112,10 +112,29 @@ const createCard = ({
 
   card.querySelector(
     'span.card-stats-item-count[data-item="downloads"]'
-    ).textContent = downloads;
+  ).textContent = downloads;
 
-    return card;
-
+  return card;
 };
 
+const applyLightbox = card => {
+  card.querySelector('a#lightbox-link').addEventListener('click', event => {
+    event.preventDefault();
 
+    const closeModalOnEscape = event => {
+      if (event.key === 'Escape') {
+        document.removeEventListener('keydown', closeModalOnEscape);
+        lightbox.close();
+      }
+    };
+
+    document.addEventListener('keydown' closeModalOnEscape);
+
+    lightbox.open(event.currentTarget);
+  });
+
+  return card;
+};
+
+const createLoader = () => 
+  Object.assign(document.createElement('div'), { className: 'loader' });
