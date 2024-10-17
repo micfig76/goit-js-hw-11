@@ -128,7 +128,7 @@ const applyLightbox = card => {
       }
     };
 
-    document.addEventListener('keydown' closeModalOnEscape);
+    document.addEventListener('keydown', closeModalOnEscape);
 
     lightbox.open(event.currentTarget);
   });
