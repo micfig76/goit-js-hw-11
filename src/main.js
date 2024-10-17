@@ -59,3 +59,4 @@ const getPhotos = async searchQuery => {
     response.json()
   );
 };
+
