@@ -8,9 +8,11 @@ const myApiKey = '35720970-632b5595f4a574f3205602e3c';
 
 const ligthbox = new SimpleLightbox('.gallery a#lightbox-link');
 
-document.querySelector(
-  'form#image-search'.addEventListener('submit', async event => {
+document
+  .querySelector('form#image-search')
+  .addEventListener('submit', async event => {
     event.prventDefault();
+
     const form = event.target;
     const searchQuery = form.elements['query'].value;
     form.reset();
@@ -43,3 +45,17 @@ document.querySelector(
       gallery.replaceChildren(...photoCards);
       ligthbox.refresh();
       });
+
+const getPhotos = async searchQuery => {
+  const params = new URLSearchParams({
+    key: myApiKey,
+    q: searchQuery,
+    image_type: 'photo',
+    orientation: 'horizontal',
+    safesearch: true,
+  });
+
+  return fetch(`https://pixabay.com/api/?${params}`).then(response =>
+    response.json()
+  );
+};
