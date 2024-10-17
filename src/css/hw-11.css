@@ -85,7 +85,7 @@
 }
 
 .loader {
-    width 48px;
+    width: 48px;
     height: 48px;
     border: 5px solid #ff3d00;
     border-bottom-color: transparent;
