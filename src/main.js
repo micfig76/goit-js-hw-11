@@ -3,6 +3,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import iziToast from 'izitoast';
 import SimpleLightbox from 'simplelightbox';
+import { comma } from 'postcss/lib/list';
 
 const myApiKey = '35720970-632b5595f4a574f3205602e3c';
 
@@ -59,4 +60,22 @@ const getPhotos = async searchQuery => {
     response.json()
   );
 };
+
+const toGalleryPhoto = ({
+  webformatURL,
+  largeImageURL,
+  tags,
+  likes,
+  views,
+  comments,
+  downloads,
+}) => ({
+  webformatURL,
+  largeImageURL,
+  tags,
+  likes,
+  views,
+  comments,
+  downloads,
+});
 
