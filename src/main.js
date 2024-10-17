@@ -38,14 +38,14 @@ document
       gallery.replaceChildren();
       return;
     }
-      const postCards = photosData.hits
+    const postCards = photosData.hits
       .map(toGalleryPhoto)
       .map(createCard)
       .map(applyLightbox);
 
-      gallery.replaceChildren(...photoCards);
-      ligthbox.refresh();
-      });
+    gallery.replaceChildren(...photoCards);
+    ligthbox.refresh();
+  });
 
 const getPhotos = async searchQuery => {
   const params = new URLSearchParams({
@@ -78,4 +78,44 @@ const toGalleryPhoto = ({
   comments,
   downloads,
 });
+
+const createCard = ({
+  webformatURL,
+  largeImageURL,
+  tags,
+  likes,
+  comments,
+  downloads,
+}) => {
+  const template = document.querySelector('template#card-template');
+  const card = document.importNode(template.textContent, true);
+
+  const lightboxLink = card.querySelector('a#lightbox-link');
+  lightboxLink.href = largeImageURL;
+
+  const img = card.querySelector('img.card-img');
+  img.src = webformatURL;
+  img.alt = tags;
+  img.title = tags;
+
+  card.querySelector(
+    'span.card-stats-item-count[data-item="likes"]'
+  ).textContent = likes;
+
+  card.querySelector(
+    'span.card-stats-item-count[data-item="views"]'
+  ).textContent = views;
+
+  card.querySelector(
+    'span.card-stats-item-count[data-item="comments"]'
+  ).textContent = comments;
+
+  card.querySelector(
+    'span.card-stats-item-count[data-item="downloads"]'
+    ).textContent = downloads;
+
+    return card;
+
+};
+
 
