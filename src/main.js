@@ -124,13 +124,13 @@ const applyLightbox = card => {
     const closeModalOnEscape = event => {
       if (event.key === 'Escape') {
         document.removeEventListener('keydown', closeModalOnEscape);
-        lightbox.close();
+        ligthbox.close();
       }
     };
 
     document.addEventListener('keydown', closeModalOnEscape);
 
-    lightbox.open(event.currentTarget);
+    ligthbox.open(event.currentTarget);
   });
 
   return card;
