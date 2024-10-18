@@ -84,6 +84,7 @@ const createCard = ({
   largeImageURL,
   tags,
   likes,
+  views,
   comments,
   downloads,
 }) => {
@@ -136,5 +137,5 @@ const applyLightbox = card => {
   return card;
 };
 
-const createLoader = () => 
+const createLoader = () =>
   Object.assign(document.createElement('div'), { className: 'loader' });
