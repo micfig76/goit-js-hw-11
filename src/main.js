@@ -7,7 +7,7 @@ import { comma } from 'postcss/lib/list';
 
 const myApiKey = '35720970-632b5595f4a574f3205602e3c';
 
-const ligthbox = new SimpleLightbox('.gallery a#lightbox-link');
+const lightbox = new SimpleLightbox('.gallery a#lightbox-link');
 
 document
   .querySelector('form#image-search')
@@ -44,7 +44,7 @@ document
       .map(applyLightbox);
 
     gallery.replaceChildren(...postCards);
-    ligthbox.refresh();
+    lightbox.refresh();
   });
 
 const getPhotos = async searchQuery => {
@@ -88,7 +88,7 @@ const createCard = ({
   downloads,
 }) => {
   const template = document.querySelector('template#card-template');
-  const card = document.importNode(template.textContent, true);
+  const card = document.importNode(template.content, true);
 
   const lightboxLink = card.querySelector('a#lightbox-link');
   lightboxLink.href = largeImageURL;
@@ -124,13 +124,13 @@ const applyLightbox = card => {
     const closeModalOnEscape = event => {
       if (event.key === 'Escape') {
         document.removeEventListener('keydown', closeModalOnEscape);
-        ligthbox.close();
+        lightbox.close();
       }
     };
 
     document.addEventListener('keydown', closeModalOnEscape);
 
-    ligthbox.open(event.currentTarget);
+    lightbox.open(event.currentTarget);
   });
 
   return card;
