@@ -12,7 +12,7 @@ const ligthbox = new SimpleLightbox('.gallery a#lightbox-link');
 document
   .querySelector('form#image-search')
   .addEventListener('submit', async event => {
-    event.prventDefault();
+    event.preventDefault();
 
     const form = event.target;
     const searchQuery = form.elements['query'].value;
