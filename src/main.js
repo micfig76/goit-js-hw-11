@@ -43,7 +43,7 @@ document
       .map(createCard)
       .map(applyLightbox);
 
-    gallery.replaceChildren(...photoCards);
+    gallery.replaceChildren(...postCards);
     ligthbox.refresh();
   });
 
